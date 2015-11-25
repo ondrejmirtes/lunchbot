@@ -1,0 +1,4 @@
+parameters:
+	slack:
+		channel: "#lunch"
+		url: https://hooks.slack.com/services/xxx

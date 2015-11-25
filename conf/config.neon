@@ -1,0 +1,26 @@
+services:
+	-
+		class: GuzzleHttp\Client
+	-
+		class: Lunchbot\Calendar\Calendar
+	-
+		class: Lunchbot\Provider\Kravin\KravinLunchMenuParser
+	-
+		class: Lunchbot\Provider\Kravin\KravinLunchMenuProvider
+	-
+		class: Lunchbot\Publisher\SlackPublisher
+		arguments:
+			channel: %slack.channel%
+			url: %slack.url%
+	-
+		class: Lunchbot\Command\PostLunchMenusCommand
+		arguments:
+			providers:
+				- @Lunchbot\Provider\Kravin\KravinLunchMenuProvider
+			publisher: @Lunchbot\Publisher\SlackPublisher
+	-
+		class: Symfony\Component\Console\Application
+		arguments:
+			name: "Slack Lunchbot"
+		setup:
+			- add(@Lunchbot\Command\PostLunchMenusCommand)
