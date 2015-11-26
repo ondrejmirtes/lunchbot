@@ -8,6 +8,10 @@ services:
 	-
 		class: Lunchbot\Provider\Kravin\KravinLunchMenuProvider
 	-
+		class: Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuParser
+	-
+		class: Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuProvider
+	-
 		class: Lunchbot\Publisher\SlackPublisher
 		arguments:
 			channel: %slack.channel%
@@ -17,6 +21,7 @@ services:
 		arguments:
 			providers:
 				- @Lunchbot\Provider\Kravin\KravinLunchMenuProvider
+				- @Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuProvider
 			publisher: @Lunchbot\Publisher\SlackPublisher
 	-
 		class: Symfony\Component\Console\Application
