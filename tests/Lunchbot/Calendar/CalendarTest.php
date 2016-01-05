@@ -14,7 +14,15 @@ class CalendarTest extends \PHPUnit_Framework_TestCase
 			],
 			[
 				new \DateTimeImmutable('2015-04-06'), // easter Monday
-				false,
+				true,
+			],
+			[
+				new \DateTimeImmutable('2016-03-28'), // easter Monday
+				true,
+			],
+			[
+				new \DateTimeImmutable('2016-03-25'), // easter Friday
+				true,
 			],
 			[
 				new \DateTimeImmutable('2015-11-17'), // state holiday
