@@ -31,7 +31,8 @@ class Calendar
 
 		return [
 			new \DateTimeImmutable(sprintf('%s-01-01', $year)),
-			\DateTimeImmutable::createFromFormat('U', easter_date($year))->modify('+2 days'),
+			(new \DateTimeImmutable(date('Y-m-d H:i:s', easter_date($year))))->modify('-2 days'),
+			(new \DateTimeImmutable(date('Y-m-d H:i:s', easter_date($year))))->modify('+1 day'),
 			new \DateTimeImmutable(sprintf('%s-05-01', $year)),
 			new \DateTimeImmutable(sprintf('%s-05-08', $year)),
 			new \DateTimeImmutable(sprintf('%s-07-05', $year)),
