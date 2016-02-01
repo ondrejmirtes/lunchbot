@@ -23,6 +23,7 @@ class MlsnejKocourLunchMenuParser
 
 		$menus = [];
 		$currentKey = null;
+		$skip = true;
 		foreach ($rows as $item) {
 			$headline = $item->text();
 			if (in_array($headline, [
@@ -30,9 +31,14 @@ class MlsnejKocourLunchMenuParser
 				'HLAVNÍ  JÍDLO',
 				'MENU 1',
 				'MENU 2',
+				'VEGETARIAN',
 			], true)) {
 				$currentKey = ucfirst(mb_strtolower(preg_replace('~(\s+)~', ' ', $headline), 'UTF-8'));
 				$menus[$currentKey] = [];
+				$skip = false;
+				continue;
+			} elseif ($headline !== '' || $skip) {
+				$skip = true;
 				continue;
 			}
 
@@ -50,8 +56,6 @@ class MlsnejKocourLunchMenuParser
 					}
 				}
 				$menus[$currentKey][] = new LunchMenuItem(sprintf('%s %s', $title, $price));
-			} else {
-				break;
 			}
 		}
 

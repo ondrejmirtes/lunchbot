@@ -10,7 +10,7 @@ class MlsnejKocourLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 		$html = file_get_contents(__DIR__ . '/data.html');
 		$parser = new MlsnejKocourLunchMenuParser();
 		$result = $parser->parseHtml($html);
-		$this->assertCount(14, $result);
+		$this->assertCount(16, $result);
 		$this->assertSame('Polévky', $result[0]->getDescription());
 		$this->assertSame('Krůtí vývar s masem a zeleninou 25 Kč', $result[1]->getDescription());
 		$this->assertSame('Francouzská cibulačka s máslovými krutony 30 Kč', $result[2]->getDescription());
@@ -25,6 +25,8 @@ class MlsnejKocourLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame("Krůtí vývar s masem a zeleninou                                      \n160g  Vepřová kýta na smetaně (svíčková), houskové knedlíky, brusinky, citron zakysaná smetana 105 Kč", $result[11]->getDescription());
 		$this->assertSame('Menu 2', $result[12]->getDescription());
 		$this->assertSame("Francouzská cibulačka s máslovými krutony                        \n160g Pečená uzená šunka na kosti, domácí bramborová kaše, zelný salátek 105 Kč", $result[13]->getDescription());
+		$this->assertSame('Vegetarian', $result[14]->getDescription());
+		$this->assertSame('Domácí bramborová kaše, sázené vejce, malý denní salátek 98Kč', $result[15]->getDescription());
 	}
 
 }
