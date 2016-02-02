@@ -4,6 +4,10 @@ services:
 	-
 		class: Lunchbot\Calendar\Calendar
 	-
+		class: Lunchbot\Provider\Klempirna\KlempirnaLunchMenuParser(DateTimeImmutable())
+	-
+		class: Lunchbot\Provider\Klempirna\KlempirnaLunchMenuProvider
+	-
 		class: Lunchbot\Provider\Kravin\KravinLunchMenuParser
 	-
 		class: Lunchbot\Provider\Kravin\KravinLunchMenuProvider
@@ -20,6 +24,7 @@ services:
 		class: Lunchbot\Command\PostLunchMenusCommand
 		arguments:
 			providers:
+				- @Lunchbot\Provider\Klempirna\KlempirnaLunchMenuProvider
 				- @Lunchbot\Provider\Kravin\KravinLunchMenuProvider
 				- @Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuProvider
 			publisher: @Lunchbot\Publisher\SlackPublisher
