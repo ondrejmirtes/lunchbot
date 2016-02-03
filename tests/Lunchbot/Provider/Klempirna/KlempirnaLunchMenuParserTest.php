@@ -29,6 +29,18 @@ class KlempirnaLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame('3. Zeleninový salát s chilli sojovými nudličkami (6, 9)', $result[3]->getDescription());
 	}
 
+	public function testParseHtmlWednesday()
+	{
+		$html = file_get_contents(__DIR__ . '/data.html');
+		$parser = new KlempirnaLunchMenuParser(new \DateTimeImmutable('2016-02-03'));
+		$result = $parser->parseHtml($html);
+		$this->assertCount(4, $result);
+		$this->assertSame('Kuřecí vývar s rýží a hráškem (9, 12)', $result[0]->getDescription());
+		$this->assertSame('1. Plzeňský guláš s houskovými knedlíky (1, 3, 7, 10, 12)', $result[1]->getDescription());
+		$this->assertSame('2. Kuřecí směs po čínsku s hranolky (1, 5, 8, 10)', $result[2]->getDescription());
+		$this->assertSame('3. Směs trhaných salátů se šunkou, sýrem a česnekovým dresinkem (1, 3, 7, 9)', $result[3]->getDescription());
+	}
+
 	public function testParseHtmlFriday()
 	{
 		$html = file_get_contents(__DIR__ . '/data.html');

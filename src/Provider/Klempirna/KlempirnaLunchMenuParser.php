@@ -46,10 +46,14 @@ class KlempirnaLunchMenuParser
 			$headline = $headlineTag->text();
 
 			$dayOfWeek = \Nette\Utils\Strings::match($headline, '~^(\w+)\s~u')[1] ?? null;
-			if (isset(self::$DAYS[$dayOfWeek]) && self::$DAYS[$dayOfWeek] === $todayDayOfWeek) {
-				$currentDayBlock = true;
+			if (isset(self::$DAYS[$dayOfWeek])) {
+				if ($currentDayBlock) {
+					break; // found tomorrow menu block
+				} elseif (self::$DAYS[$dayOfWeek] === $todayDayOfWeek) {
+					$currentDayBlock = true;
+				}
 			} elseif ($currentDayBlock) {
-				if (trim($headline) === 'Dezert') {
+				if (\Nette\Utils\Strings::trim($headline) === 'Dezert') {
 					break;
 				}
 				$result[] = new LunchMenuItem($headlineTag->siblings()->text());
