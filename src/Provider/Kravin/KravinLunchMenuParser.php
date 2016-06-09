@@ -39,6 +39,14 @@ class KravinLunchMenuParser
 		foreach ($crawler->filter('.entry-content ul:first-of-type li strong') as $node) {
 			$result[] = new LunchMenuItem(trim($node->nodeValue));
 		}
+		if (count($result) === 1) {
+			foreach ($crawler->filter('.entry-content p strong') as $node) {
+				$trimmed = \Nette\Utils\Strings::trim($node->nodeValue);
+				if (\Nette\Utils\Strings::startsWith(\Nette\Utils\Strings::lower($trimmed), 'menu')) {
+					$result[] = new LunchMenuItem($trimmed);
+				}
+			}
+		}
 
 		return $result;
 	}

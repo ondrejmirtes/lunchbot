@@ -47,6 +47,17 @@ class KravinLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 					'HOVĚZÍ CARPACCIO- MARINOVANÉ PLÁTKY HOVĚZÍ SVÍČKOVÉ, SERVÍROVANÉ S ČERSTVOU RUKOLOU, PARMAZÁNEM, BAZALKOVÝM PESTEM A TOUSTY 149,-',
 				],
 			],
+			[
+				__DIR__ . '/data3.html',
+				[
+					'Květáková s vejcem (samostatně 25,-)',
+					'Menu č.1 Bramborové noky s restovaným vepřovým masem, žampiony, listovým špenátem s česnekem a bešamelovou omáčkou, sypané parmazánem 110,-',
+					'Menu č.2 Kentucky Wings- smažená pikantní kuřecí křídla v kukuřičném těstíčku, podávaná s mléčnou bramborovou kaší s máslem a malým salátem coleslaw 110,-',
+					'Menu č.3 Mexické Burritos s restovanými kuřecími nudličkami, paprikou, červenou cibulí,tomatovou salsou a sýrem, podávané s malou porcí bramborových hranolek a zakysanou smetanou 110,-',
+					'Menu č.4 Těstovinový salát s tuňákem ve vlastní šťávě, variací míchané čerstvé zeleniny, olivami, vejcem a olivovým olejem 110,-',
+					'Menu č.5 300g Velký šťavnatý grilovaný steak z vepřové krkovičky, podávaný s restovanými fazolkami se slaninou a česnekovým dipem 139,-',
+				],
+			],
 		];
 	}
 
