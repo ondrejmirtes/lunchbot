@@ -58,6 +58,20 @@ class KravinLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 					'Menu č.5 300g Velký šťavnatý grilovaný steak z vepřové krkovičky, podávaný s restovanými fazolkami se slaninou a česnekovým dipem 139,-',
 				],
 			],
+			[
+				__DIR__ . '/data4.html',
+				[
+					'Žampionový krém (samostatně 25,-)',
+					'Menu č.1 Těstoviny Rigatoni Bolognese- s masovým ragů s tomaty, česnekem, cibulkou a oreganem, sypané strouhaným eidamským sýrem 115,-',
+					'Menu č.2 Pečené kuřecí paličky, marinované v indickém koření Tandoori, podávané s dušenou dlouhozrnnou rýží, šťavou z výpeku a salátkem coleslaw 115,-',
+					'Menu č.3 Pečený vepřový záhorácký závitek, plněný zelím a slaninou, podávaný se šťouchanými brambory s jarní cibulkou a máslem, šťáva z výpeku 115,-',
+					'Menu č.4 Salát se šlehaným kozím sýrem s créme fraiche, červenou řepou, variací trhaných listových salátů, fazolkami a rukolou 115,-',
+					'Menu č.5 Grilovaný steak z hovězí roštěné, servírovaný s gratinovanými brambory se smetanou a parmazánem, konfitovaným česnekem a silnou omáčkou demi glace 145,-',
+					'Menu č.6 200g Grilované kuřecí prso Supreme s kostí a kůží, servírované s jemným bramborovým pyré a pikantní švestkovou omáčkou 135,-',
+					'Menu č.7  Smažený sýr (eidam) s bramborovými hranolky a domácí tatarskou omáčkou 115,-',
+					'Menu č.8 Hovězí Carpaccio- marinované plátky hovězí svíčkové, servírované s čerstvou rukolou, parmazánem, bazalkovým pestem a tousty 159,-',
+				],
+			],
 		];
 	}
 
