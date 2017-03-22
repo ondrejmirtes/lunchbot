@@ -39,12 +39,23 @@ class KravinLunchMenuParser
 		foreach ($crawler->filter('.entry-content ul:first-of-type li strong') as $node) {
 			$result[] = new LunchMenuItem(trim($node->nodeValue));
 		}
+
+		$insideMenuBlock = false;
 		if (count($result) === 1) {
 			foreach ($crawler->filter('.entry-content')->children() as $node) {
 				$textLines = explode("\n", \Nette\Utils\Strings::trim($node->textContent));
 				foreach ($textLines as $textLine) {
 					$trimmed = \Nette\Utils\Strings::trim($textLine);
-					if (\Nette\Utils\Strings::startsWith(\Nette\Utils\Strings::lower($trimmed), 'menu')) {
+					if ($trimmed === '') {
+						continue;
+					}
+					if (\Nette\Utils\Strings::lower($trimmed) === 'hlavní jídlo') {
+						$insideMenuBlock = true;
+						continue;
+					} elseif (in_array(\Nette\Utils\Strings::lower($trimmed), ['salát', 'dezert', 'doporučujeme'], true)) {
+						break 2;
+					}
+					if ($insideMenuBlock) {
 						$result[] = new LunchMenuItem($trimmed);
 					}
 				}

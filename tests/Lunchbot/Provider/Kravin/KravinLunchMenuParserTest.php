@@ -72,6 +72,20 @@ class KravinLunchMenuParserTest extends \PHPUnit_Framework_TestCase
 					'Menu č.8 Hovězí Carpaccio- marinované plátky hovězí svíčkové, servírované s čerstvou rukolou, parmazánem, bazalkovým pestem a tousty 159,-',
 				],
 			],
+			[
+				__DIR__ . '/data5.html',
+				[
+					'Bramborový krém se špekem  ( samostatně 25kč/ k hlavnímu jídlu 10kč )',
+					'č.1 Kynuté švestkové knedlíky se strouhaným tvarohem, rozpuštěným máslem a moučkovým cukrem 119,-',
+					'č.2 Hovězí pečeně se znojemskou omáčkou s kyselou okurkou a dušenou jasmínovou rýží 119,-',
+					'č.3 Grilovaný steak z vepřové krkovice, marinovaný v hrubozrnné hořčici, podávaný se šťouchanými brambory s pórkem a máslem 119,-',
+					'č.4 Kuskusový salát s řeckým sýrem Feta,  sušenými tomaty, okurkou, cuketou, červenou cibulkou a olivovým olejem 119,-',
+					'č.5 Pečený pstruh v kouři,  podávaný s restovanou zeleninou s bramborovými grenaillemi a bazalkovým pestem 145,-',
+					'č.6 Grilované kachní prso, servírované se švestkovou omáčkou a šťouchanými brambory se smetanou a máslem 149,-',
+					'č.7  Smažený sýr (eidam) s bramborovými hranolky a domácí tatarskou omáčkou 119,-',
+					'č.8 Hovězí Carpaccio- marinované plátky hovězí svíčkové, servírované s čerstvou rukolou, parmazánem, bazalkovým pestem a tousty 159,-',
+				],
+			],
 		];
 	}
 
