@@ -2,7 +2,7 @@
 
 namespace Lunchbot\Provider\Klempirna;
 
-class KlempirnaLunchMenuParserTest extends \PHPUnit_Framework_TestCase
+class KlempirnaLunchMenuParserTest extends \PHPUnit\Framework\TestCase
 {
 
 	public function testParseHtmlMonday()

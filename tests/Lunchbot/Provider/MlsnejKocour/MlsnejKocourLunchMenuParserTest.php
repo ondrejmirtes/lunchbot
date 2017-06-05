@@ -2,7 +2,7 @@
 
 namespace Lunchbot\Provider\MlsnejKocour;
 
-class MlsnejKocourLunchMenuParserTest extends \PHPUnit_Framework_TestCase
+class MlsnejKocourLunchMenuParserTest extends \PHPUnit\Framework\TestCase
 {
 
 	public function testParseHtml()
