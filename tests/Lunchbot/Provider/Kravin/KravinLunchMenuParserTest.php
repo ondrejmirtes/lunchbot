@@ -2,7 +2,7 @@
 
 namespace Lunchbot\Provider\Kravin;
 
-class KravinLunchMenuParserTest extends \PHPUnit_Framework_TestCase
+class KravinLunchMenuParserTest extends \PHPUnit\Framework\TestCase
 {
 
 	/**

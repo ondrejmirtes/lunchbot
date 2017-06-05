@@ -31,7 +31,7 @@ class SlackPublisher implements Publisher
 	public function publishResults(array $results)
 	{
 		$this->httpClient->post($this->url, [
-			'body' => json_encode([
+			\GuzzleHttp\RequestOptions::BODY => json_encode([
 				'channel' => $this->channel,
 				'username' => 'Lunchbot',
 				'icon_url' => 'https://cdn2.iconfinder.com/data/icons/life-concepts-lifestyles/128/eating-512.png',
@@ -46,6 +46,7 @@ class SlackPublisher implements Publisher
 					);
 				}, $results)),
 			]),
+			\GuzzleHttp\RequestOptions::VERIFY => \Composer\CaBundle\CaBundle::getBundledCaBundlePath()
 		]);
 	}
 
