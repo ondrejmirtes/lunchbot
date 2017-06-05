@@ -17,49 +17,19 @@ class KravinLunchMenuParser
 		$crawler = new Crawler();
 		$crawler->addContent($html);
 
-		$soupText = '';
-		if (count($crawler->filter('.entry-content table td')) > 0) {
-			$soupText = trim(preg_replace('~\x{00a0}~siu', ' ', $crawler->filter('.entry-content table td')->text()));
-		} else {
-			$nextLineIsSoup = false;
-			foreach ($crawler->filter('.entry-content p') as $soupCandidate) {
-				if (\Nette\Utils\Strings::lower(\Nette\Utils\Strings::trim($soupCandidate->textContent)) === 'polévka') {
-					$nextLineIsSoup = true;
-				} elseif ($nextLineIsSoup) {
-					$soupText = trim(preg_replace('~\x{00a0}~siu', ' ', $soupCandidate->textContent));
-					break;
-				}
+		$result = [];
+		/** @var \DOMNode $node */
+		$filter = $crawler->filter('.pricing-box .row');
+		foreach ($filter as $node) {
+			$textLine = \Nette\Utils\Strings::trim($node->textContent);
+			$trimmed = \Nette\Utils\Strings::replace($textLine, '~\\s{2,}~u', ' ');
+			if ($trimmed === '') {
+				continue;
 			}
-		}
-
-		$result = [
-			new LunchMenuItem($soupText),
-		];
-
-		foreach ($crawler->filter('.entry-content ul:first-of-type li strong') as $node) {
-			$result[] = new LunchMenuItem(trim($node->nodeValue));
-		}
-
-		$insideMenuBlock = false;
-		if (count($result) === 1) {
-			foreach ($crawler->filter('.entry-content')->children() as $node) {
-				$textLines = explode("\n", \Nette\Utils\Strings::trim($node->textContent));
-				foreach ($textLines as $textLine) {
-					$trimmed = \Nette\Utils\Strings::trim($textLine);
-					if ($trimmed === '') {
-						continue;
-					}
-					if (\Nette\Utils\Strings::lower($trimmed) === 'hlavní jídlo') {
-						$insideMenuBlock = true;
-						continue;
-					} elseif (in_array(\Nette\Utils\Strings::lower($trimmed), ['salát', 'dezert', 'doporučujeme'], true)) {
-						break 2;
-					}
-					if ($insideMenuBlock) {
-						$result[] = new LunchMenuItem($trimmed);
-					}
-				}
+			if (in_array(\Nette\Utils\Strings::lower($trimmed), ['salát', 'dezert', 'doporučujeme'], true)) {
+				break;
 			}
+			$result[] = new LunchMenuItem($trimmed);
 		}
 
 		return $result;
