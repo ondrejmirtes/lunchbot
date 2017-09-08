@@ -47,7 +47,11 @@ class PostLunchMenusCommand extends Command
 		}
 		$results = [];
 		foreach ($this->providers as $provider) {
-			$lunchMenu = $provider->getTodayLunchMenu();
+			try {
+				$lunchMenu = $provider->getTodayLunchMenu();
+			} catch (\GuzzleHttp\Exception\GuzzleException $e) {
+				continue;
+			}
 			if (count($lunchMenu) > 0) {
 				$results[] = new LunchMenuResult(
 					$provider->getRestaurantName(),
