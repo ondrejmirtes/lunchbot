@@ -16,6 +16,10 @@ services:
 	-
 		class: Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuProvider
 	-
+		class: Lunchbot\Provider\Putica\PuticaLunchMenuParser(DateTimeImmutable())
+	-
+		class: Lunchbot\Provider\Putica\PuticaLunchMenuProvider
+	-
 		class: Lunchbot\Publisher\SlackPublisher
 		arguments:
 			channel: %slack.channel%
@@ -27,6 +31,7 @@ services:
 				- @Lunchbot\Provider\Klempirna\KlempirnaLunchMenuProvider
 				- @Lunchbot\Provider\Kravin\KravinLunchMenuProvider
 				- @Lunchbot\Provider\MlsnejKocour\MlsnejKocourLunchMenuProvider
+				- @Lunchbot\Provider\Putica\PuticaLunchMenuProvider
 			publisher: @Lunchbot\Publisher\SlackPublisher
 	-
 		class: Symfony\Component\Console\Application
