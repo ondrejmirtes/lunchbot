@@ -57,7 +57,9 @@ class PostLunchMenusCommand extends Command
 			}
 		}
 
-		$this->publisher->publishResults($results);
+		if (count($results) > 0) {
+			$this->publisher->publishResults($results);
+		}
 
 		if ($shouldOutput) {
 			$output->writeln('Posted!');
